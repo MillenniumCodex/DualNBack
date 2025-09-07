@@ -2,29 +2,26 @@ Categories:
   - Games
   - Science & Education
 License: GPL-3.0-or-later
-
+WebSite: https://www.nature.com/articles/s41598-021-82663-w
 SourceCode: https://github.com/MillenniumCodex/DualNBack
 IssueTracker: https://github.com/MillenniumCodex/DualNBack/issues
-WebSite: https://www.nature.com/articles/s41598-021-82663-w
 Donate: https://ko-fi.com/silicondreams
 
 AutoName: Dual N-Back
 Description: |
   Train your working memory and fluid intelligence with this classic dual n-back game.
-  
+
   Dual N-Back is a scientifically proven brain training that has been shown in studies to increase IQ, improve working memory and fluid intelligence. This app provides a clean, minimalist interface to let you focus on the game.
-  
+
   * Choose your N-level to adjust the difficulty.
   * Set the number of rounds for each game session.
   * Track your progress over time with win rates and score charts.
   * Pause and resume your game at any time.
-  
+
   This app is 100% free, open-source, and contains no ads or trackers.
 
 RepoType: git
 Repo: https://github.com/MillenniumCodex/DualNBack.git
-
-
 Builds:
   - versionName: 1.0.0
     versionCode: 1
