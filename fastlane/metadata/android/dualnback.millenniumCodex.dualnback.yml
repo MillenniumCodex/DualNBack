@@ -1,11 +1,11 @@
 Categories:
   - Games
   - Science & Education
-License: GNU v3
+License: GPL-3.0-or-later
 
 SourceCode: https://github.com/MillenniumCodex/DualNBack
 IssueTracker: https://github.com/MillenniumCodex/DualNBack/issues
-ResearchPaper: https://www.nature.com/articles/s41598-021-82663-w
+WebSite: https://www.nature.com/articles/s41598-021-82663-w
 Donate: https://ko-fi.com/silicondreams
 
 AutoName: Dual N-Back
@@ -33,7 +33,7 @@ Builds:
     gradle:
       - yes
 
-AutoUpdateMode: Version %v
+AutoUpdateMode: Version
 UpdateCheckMode: Tags
 CurrentVersion: 1.0.0
 CurrentVersionCode: 1
