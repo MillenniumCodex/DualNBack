@@ -13,11 +13,20 @@ android {
         applicationId = "dualnback.millenniumCodex.dualnback"
         minSdk = 24
         targetSdk = 36
-        versionCode = 5
-        versionName = "1.0.4"
+        versionCode = 6
+        versionName = "1.0.5"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {
+        create("release") {
+            // These lines read the details from your gradle.properties file
+            storeFile = file(System.getenv("MYAPP_RELEASE_STORE_FILE") ?: project.properties["MYAPP_RELEASE_STORE_FILE"] as String)
+            storePassword = System.getenv("MYAPP_RELEASE_STORE_PASSWORD") ?: project.properties["MYAPP_RELEASE_STORE_PASSWORD"] as String
+            keyAlias = System.getenv("MYAPP_RELEASE_KEY_ALIAS") ?: project.properties["MYAPP_RELEASE_KEY_ALIAS"] as String
+            keyPassword = System.getenv("MYAPP_RELEASE_KEY_PASSWORD") ?: project.properties["MYAPP_RELEASE_KEY_PASSWORD"] as String
+        }}
 
     buildTypes {
         release {
@@ -26,8 +35,10 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("release")
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11

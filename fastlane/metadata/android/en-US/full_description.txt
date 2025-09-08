@@ -1,0 +1,11 @@
+Train your working memory and boost your fluid intelligence with Dual N-Back. Based on a scientifically proven cognitive task, this app provides a clean and minimalist way to engage in effective brain training shown in studies to increase IQ.
+
+The dual n-back task challenges you to track two separate sequences of information simultaneously, improving your ability to focus, manage distractions, and manipulate information in your head.
+
+Features:
+* Adjustable N-level to scale the difficulty to your current ability.
+* Customizable number of rounds for each game session.
+* Track your progress over time with clear win rates and score charts.
+* Simple pause and resume functionality for training on the go.
+
+This application is 100% free and open-source. It contains absolutely no ads, no trackers, and requires no permissions.
