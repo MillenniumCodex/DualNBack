@@ -5,3 +5,12 @@ plugins {
     alias(libs.plugins.ksp) apply false
     id("com.google.dagger.hilt.android") version "2.51" apply false
 }
+
+android {
+    dependenciesInfo {
+        // Disables dependency metadata when building APKs.
+        includeInApk = false
+        // Disables dependency metadata when building Android App Bundles.
+        includeInBundle = false
+    }
+}
