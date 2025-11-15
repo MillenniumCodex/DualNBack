@@ -22,4 +22,3 @@ github_millennium.pub
 github_millennium
 # Signing key and properties - DO NOT COMMIT
 my-release-key.keystore
-gradle.properties
