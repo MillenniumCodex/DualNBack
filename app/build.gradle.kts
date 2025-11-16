@@ -17,10 +17,12 @@ android {
         versionName = "1.0.5"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+}
 
 dependenciesInfo {
-    includeInApk.set(false)
-    includeInBundle.set(false)
+        includeInApk = false
+        includeInBundle = false
+
 }
 
     }
