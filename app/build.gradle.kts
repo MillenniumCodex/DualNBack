@@ -17,14 +17,13 @@ android {
         versionName = "1.0.5"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-}
+    }
 
-dependenciesInfo {
-        includeInApk = false
-        includeInBundle = false
-
-}
-
+    // FIX #1: MOVED INSIDE THE ANDROID BLOCK AND REMOVED THE EXTRA BRACE
+    dependenciesInfo {
+        // FIX #2: USING .set(false) FOR KOTLIN DSL
+        includeInApk.set(false)
+        includeInBundle.set(false)
     }
 
     signingConfigs {
@@ -34,7 +33,8 @@ dependenciesInfo {
             storePassword = System.getenv("MYAPP_RELEASE_STORE_PASSWORD") ?: project.properties["MYAPP_RELEASE_STORE_PASSWORD"] as String
             keyAlias = System.getenv("MYAPP_RELEASE_KEY_ALIAS") ?: project.properties["MYAPP_RELEASE_KEY_ALIAS"] as String
             keyPassword = System.getenv("MYAPP_RELEASE_KEY_PASSWORD") ?: project.properties["MYAPP_RELEASE_KEY_PASSWORD"] as String
-        }}
+        }
+    }
 
     buildTypes {
         release {
@@ -60,10 +60,12 @@ dependenciesInfo {
             kotlinCompilerExtensionVersion = "1.5.8"
         }
     }
-}
+} // <-- The 'android' block now correctly closes here at the end
 
 dependencies {
-
+    // FIX #3: MERGED ALL DEPENDENCIES INTO ONE BLOCK
+    
+    // Standard Compose & Core dependencies from both blocks
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -72,6 +74,28 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+
+    // Hilt for Dependency Injection
+    implementation("com.google.dagger:hilt-android:2.51")
+    ksp("com.google.dagger:hilt-compiler:2.51")
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+
+    // Room for Database
+    implementation("androidx.room:room-runtime:2.6.1")
+    implementation("androidx.room:room-ktx:2.6.1")
+    ksp("androidx.room:room-compiler:2.6.1")
+
+    // Lifecycle Components for observing state
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.7.0")
+
+    // Navigation for Compose
+    implementation("androidx.navigation:navigation-compose:2.7.7")
+
+    // Vico for Charts
+    implementation("com.patrykandpatrick.vico:compose-m3:1.14.0")
+
+    // Testing dependencies
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -79,43 +103,4 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
-    dependencies {
-        // Standard Compose & Core dependencies
-        implementation("androidx.core:core-ktx:1.12.0")
-        implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
-        implementation("androidx.activity:activity-compose:1.8.2")
-        implementation(platform("androidx.compose:compose-bom:2024.02.01"))
-        implementation("androidx.compose.ui:ui")
-        implementation("androidx.compose.ui:ui-graphics")
-        implementation("androidx.compose.ui:ui-tooling-preview")
-        implementation("androidx.compose.material3:material3")
-
-        // Hilt for Dependency Injection
-        implementation("com.google.dagger:hilt-android:2.51")
-        ksp("com.google.dagger:hilt-compiler:2.51")
-        implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
-
-        // Room for Database
-        implementation("androidx.room:room-runtime:2.6.1")
-        implementation("androidx.room:room-ktx:2.6.1")
-        ksp("androidx.room:room-compiler:2.6.1")
-
-        // Lifecycle Components for observing state
-        implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
-        implementation("androidx.lifecycle:lifecycle-runtime-compose:2.7.0")
-
-        // Navigation for Compose
-        implementation("androidx.navigation:navigation-compose:2.7.7")
-
-        // Vico for Charts
-        implementation("com.patrykandpatrick.vico:compose-m3:1.14.0")
-
-        testImplementation("junit:junit:4.13.2")
-        androidTestImplementation("androidx.test.ext:junit:1.1.5")
-        androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-        androidTestImplementation(platform("androidx.compose:compose-bom:2024.02.01"))
-        androidTestImplementation("androidx.compose.ui:ui-test-junit4")
-        debugImplementation("androidx.compose.ui:ui-tooling")
-        debugImplementation("androidx.compose.ui:ui-test-manifest")
-    }
 }
