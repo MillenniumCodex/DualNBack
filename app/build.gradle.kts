@@ -19,11 +19,11 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    // FIX #1: MOVED INSIDE THE ANDROID BLOCK AND REMOVED THE EXTRA BRACE
-    dependenciesInfo {
-        // FIX #2: USING .set(false) FOR KOTLIN DSL
-        includeInApk.set(false)
-        includeInBundle.set(false)
+   dependenciesInfo {
+        includeInApk = false
+        // Disables dependency metadata when building Android App Bundles.
+        includeInBundle = false
+
     }
 
     signingConfigs {
